@@ -1,0 +1,43 @@
+Title: Indigency "Flowchart"
+Author: Adrianne Downey
+Before:Before: <link rel="stylesheet" type="text/css" href="https://suffolklitlab.org/howto/qna/style/style.css">
+<div id="icon" style="background-size: 110px 99px;background-image: url('https://suffolklitlab.org/howto/qna/images/maxheadroom.gif');"></div>
+<h2 style="text-align:center;">Indigency "Flowchart"</h2>
+<p><b>This is a <a href="https://www.codingthelaw.org/level/2/#mission_p1">class project</a>. You should not rely on it as a source of legal information!</b></p>
+<p>Answer the following questions to see if you qualify for appointed counsel in New Jersey.</p>
+
+Q(1):Has a person been charged with a formally indictable offense?
+A:Yes.
+	Q(1.1):GOTO:2
+A:No.
+	Q(1.2):Ineligible.
+
+Q(2):Does the person receive government benefits that are considered income, such as unemployment, disability, social security, and other public assistance programs, like food stamps?
+A:Yes.
+	Q(2.1):GOTO:3
+A:No.
+	Q(2.2):GOTO:4
+
+Q(3):After adding those benefits ti the person's income, are they still making below 125% of the Federal Poverty Line?
+A:Yes.
+	Q(3.1):GOTO:5
+A:No.
+	Q(3.2):Ineligible.
+
+Q(4):Does the person have an income of below 125% of the Federal Poverty Line?
+A:Yes.
+	Q(4.1):GOTO:5
+A:No.
+	Q(4.2):Ineligible.
+
+Q(5):Was the person able to make bail?
+A:Yes.
+	Q(5.1):GOTO:6
+A:No.
+	Q(5.2):Eligible.
+
+Q(6):Was the source of bail one that would impact the person's eligibility?
+A:Yes.
+	Q(6.1):Ineligible.
+A:No.
+	Q(6.2):Eligible.
