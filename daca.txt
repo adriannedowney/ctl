@@ -1,0 +1,30 @@
+Q(1): Is their birthday on or after June 16, 1981?
+A: Yes.
+	Q(1.1):GOTO:2
+A: No.
+	Q(1.2):GOTO:6
+Q(2): Did they enter the United States before their sixteenth birthday?
+A: Yes.
+	Q(2.1):GOTO:3
+A: No.
+	Q(2.2):GOTO:6
+
+Q(3): Were they in the United States on June 15, 2012?
+A: Yes.
+	Q(3.1):GOTO:4
+A: No.
+	Q(3.2):GOTO:6
+
+Q(4): Have they continuously resided in the United States since June 15, 2007?
+A: Yes.
+	Q(4.1):GOTO:5
+A: No.
+	Q(4.2):GOTO:6
+
+Q(5): Were they out of status on June 15, 2012?
+A: Yes.
+	Q(5.1):GOTO:2
+A: No.
+	Q(5.2):GOTO:6
+
+Q(6): Inelligible.
