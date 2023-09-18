@@ -1,0 +1,84 @@
+Title: New Jersey Indigency Calculator
+Author: Adrianne Downey
+Before: <link rel="stylesheet" type="text/css" href="https://suffolklitlab.org/howto/qna/style/style.css">
+<div id="icon" style="background-size: 110px 99px;background-image: url('https://suffolklitlab.org/howto/qna/images/maxheadroom.gif');"></div>
+<h2 style="text-align:center;">New Jersey Indigency Calculator</h2>
+<p><b>This is a <a href="https://www.codingthelaw.org/Fall_2023/level/2/#mission_p2">class project</a>. You should not rely on it as a source of legal information. It is likely incomplete.</b></p>
+<p>Answer the following questions to see if you qualify for an appointment of counsel or fee waiver.</p>
+After:
+<script>
+function fedpov(house,income,percentage){
+	// Determines if your income is less than or equal to
+	// a percentage of the 2023 federal poverty guidelines
+	// for the contiguous United States. See
+	// https://aspe.hhs.gov/poverty-guidelines
+
+		var line = NaN;
+
+		if (house == 1) {
+			line = 14580;
+		} else if (house == 2) {
+			line = 19720;
+		} else if (house == 3) {
+			line = 24860;
+		} else if (house == 4) {
+			line = 30000;
+		} else if (house == 5) {
+			line = 35140;
+		} else if (house == 6) {
+			line = 40280;
+		} else if (house == 7) {
+			line = 45420;
+		} else if (house == 8) {
+			line = 50560;
+		} else if (house > 8) {
+			line = 50560 + (house-8)*5140;
+		}
+
+		if (income <= (line*(percentage/125))) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+</script>
+
+Q(1):Has a person been charged with a formally indictable offense?
+A:Yes.
+	Q(1.1):GOTO:2
+A:No.
+	Q(1.2):Ineligible.
+
+Q(2):Does the person receive government benefits that are considered income, such as unemployment, disability, social security, and other public assistance programs, like food stamps?
+A:Yes.
+	Q(2.1):GOTO:house
+A:No.
+	Q(2.2):GOTO:4
+
+Q(house):How many people are in your household?
+X:number
+	Q(income):How much income does your household bring in per year after taxes?
+	X[javascript:if(fedpov(getvar('house'),getvar('income'),125)){goto(getvar('6'))}else{goto('7.1')})]:number
+Q(4):After adding those benefits to the person's income, are they still making below 125% of the Federal Poverty Line?
+A:Yes.
+	Q(4.1):GOTO:5
+A:No.
+	Q(4.2):Ineligible.
+
+Q(5):Does the person have an income of below 125% of the Federal Poverty Line?
+A:Yes.
+	Q(5.1):GOTO:5
+A:No.
+	Q(5.2):Ineligible.
+
+Q(6):Was the person able to make bail?
+A:Yes.
+	Q(6.1):GOTO:6
+A:No.
+	Q(6.2):Eligible.
+
+Q(7):Was the source of bail one that would impact the person's eligibility?
+A:Yes.
+	Q(7.1):Ineligible.
+A:No.
+	Q(7.2):Eligible.
