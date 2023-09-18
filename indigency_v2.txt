@@ -53,12 +53,12 @@ Q(2):Does the person receive government benefits that are considered income, suc
 A:Yes.
 	Q(2.1):GOTO:house
 A:No.
-	Q(2.2):GOTO:4
+	Q(2.2):GOTO:house
 
 Q(house):How many people are in your household?
 X:number
-	Q(income):How much income does your household bring in per year after taxes?
-	X[javascript:if(fedpov(getvar('house'),getvar('income'),125)){goto(getvar('6'))}else{goto('7.1')})]:number
+	Q(income):How much income does your household bring in per year after taxes?	
+	X[javascript:if (fedpov(getvar('house'),getvar('income'),125)){ goto('bail') } else { goto('end') }]:number
 Q(4):After adding those benefits to the person's income, are they still making below 125% of the Federal Poverty Line?
 A:Yes.
 	Q(4.1):GOTO:5
@@ -67,13 +67,13 @@ A:No.
 
 Q(5):Does the person have an income of below 125% of the Federal Poverty Line?
 A:Yes.
-	Q(5.1):GOTO:5
+	Q(5.1):GOTO:bail
 A:No.
 	Q(5.2):Ineligible.
 
-Q(6):Was the person able to make bail?
+Q(bail):Was the person able to make bail?
 A:Yes.
-	Q(6.1):GOTO:6
+	Q(6.1):GOTO:7
 A:No.
 	Q(6.2):Eligible.
 
@@ -82,3 +82,5 @@ A:Yes.
 	Q(7.1):Ineligible.
 A:No.
 	Q(7.2):Eligible.
+
+Q(end): Ineligible. Unfortunately, I have no further advice. Good-bye.
