@@ -23,8 +23,60 @@ A: No.
 
 Q(5): Were they out of status on June 15, 2012?
 A: Yes.
-	Q(5.1):GOTO:2
+	Q(5.1):GOTO:7
 A: No.
 	Q(5.2):GOTO:6
 
 Q(6): Inelligible.
+
+Q(7): Have they been convicted of a felony or a significant misdemeanor?
+A: Yes.
+	Q(7.1):GOTO:6
+A: No.
+	Q(7.2):GOTO:8
+
+Q(8): Have they been convicted of more than one misdemeanor?
+A: Yes.
+	Q(8.1):GOTO:6
+A: No.
+	Q(8.2):GOTO:9
+
+Q(9): Do they pose a threat to national security or to public safety?
+A: Yes.
+	Q(9.1):GOTO:6
+A: No.
+	Q(9.2):GOTO:10
+
+Q(10): Are they currently in school?
+A: Yes.
+	Q(10.1):GOTO:11
+A: No. 
+	Q(10.2):GOTO:12
+
+Q(11): Are they 15 or older?
+A: Yes.
+	Q(11.1):GOTO:13
+A: No.
+	Q(11.2):GOTO:14
+
+Q(12): Do they have a High School Diploma or GED?
+A: Yes.
+	Q(12.1):GOTO:11
+A: No.
+	Q(12.2):GOTO:15
+
+Q(13): Eligible. 
+
+Q(14): Are they currently in removal proceedings, or have a final removal or VD?
+A: Yes.
+	Q(14.1):GOTO:13
+A: No. 
+	Q(14.2):GOTO:16
+
+Q(15): Are they an honorably discharged veteran of the Coast Guard or Armed Forces of the United States?
+A: Yes.
+	Q(15.1):GOTO:13
+A: No.
+	Q(15.2):GOTO:16
+
+Q(16): Wait.
